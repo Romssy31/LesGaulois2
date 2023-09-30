@@ -12,9 +12,13 @@ public class Romain {
 	public String getNom() {
 		return nom;
 	}
+	
+	public int getForce() {
+		return force;
+	}
 
 	public void parler(String texte) {
-		System.out.println(prendreParole() + "« " + texte + "»");
+		System.out.println(prendreParole()+ texte );
 	}
 
 	private String prendreParole() {
@@ -25,7 +29,7 @@ public class Romain {
 		assert testForcePositive();
 		force -= forceCoup;
 		if (force > 0) {
-			parler("Aïe");
+			parler("Aie");
 		} else {
 			parler("J'abandonne...");
 		}
@@ -34,4 +38,11 @@ public class Romain {
 	private boolean testForcePositive() {
 		return force >= 0;
 	}
+	
+	 public static void main(String[] args) {
+	        Romain romain = new Romain("Maximus", 10);
+	        
+	        romain.parler("Bonjour tout le monde !");
+	        romain.recevoirCoup(5);
+	    }
 }
