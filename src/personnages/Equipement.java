@@ -4,14 +4,14 @@ public enum Equipement {
     CASQUE("Casque"),
     BOUCLIER("Bouclier");
 
-    private String description;
+    private String nom;
 
-    Equipement(String description) {
-        this.description = description;
+    private Equipement(String nom) {
+        this.nom = nom;
     }
 
     @Override
     public String toString() {
-        return description;
+        return nom;
     }
 }

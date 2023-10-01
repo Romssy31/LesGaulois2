@@ -4,13 +4,13 @@ public class Romain {
     private String nom;
     private int force;
     private Equipement[] equipements;
-    private int nbEquipements;
+    private int nbEquipements = 0;
+    private int force_apres_coup;
 
     public Romain(String nom, int force) {
         this.nom = nom;
         this.force = force;
         this.equipements = new Equipement[2];
-        this.nbEquipements = 0;
     }
 
 	public String getNom() {
@@ -32,21 +32,22 @@ public class Romain {
 	public void recevoirCoup(int forceCoup) {
 		assert testForcePositive() : "la force d’un Romain est positive";
 		force -= forceCoup;
+		force_apres_coup = force;
 		if (force > 0) {
 			parler("Aie");
 		} else {
 			parler("J'abandonne...");
 		}
-		assert testForcePositive() : "la force d’un Romain a diminué";
+		assert testForceApresCoup() : "la force d’un Romain a diminué";
 	}
 
 	private boolean testForcePositive() {
 		return force >= 0;
 	}
 	
-	public void equiper(Equipement equipement) {
-        parler("Équipé de : " + equipement);
-    }
+	private boolean testForceApresCoup() {
+		return force <= force_apres_coup;
+	}
 	
 	 public void sEquiper(Equipement equipement) {
 	        switch (nbEquipements) {
@@ -63,13 +64,12 @@ public class Romain {
 	            case 2:
 	                parler("Le soldat " + nom + " est déjà bien protégé !");
 	                break;
-	            default:
-	                parler("Nombre d'équipements non pris en charge !");
 	        }
 	    }
 	
 	 private void ajouterEquipement(Equipement equipement) {
-	        equipements[nbEquipements++] = equipement;
+	        equipements[nbEquipements] = equipement;
+	        nbEquipements++;
 	        parler("Le soldat " + nom + " s'équipe avec un " + equipement + ".");
 	    }
 	

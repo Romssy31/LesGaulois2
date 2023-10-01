@@ -5,14 +5,13 @@ public class Village {
 	private String nom;
 	private Chef chef;
 	private Gaulois[] villageois;
-	private int NbVillageois;
+	private int NbVillageois = 0;
 	private int NbvillageoisMax;
 
 	public Village(String nom, int NbvillageoisMax) {
 		this.nom = nom;
 		this.NbvillageoisMax = NbvillageoisMax;
 		this.villageois = new Gaulois[NbvillageoisMax];
-		this.NbVillageois = 0;
 
 	}
 
@@ -39,20 +38,20 @@ public class Village {
 		if (NumVillageois >= 0 && NumVillageois < NbVillageois) {
 			return villageois[NumVillageois];
 		} else {
-			System.out.println("Le NumVillageois n'est pas correct");
+			System.out.println("Le villageois n'existe pas");
 			return null;
 		}
 	}
 
 	public void afficherVillageois() {
-		System.out.println("Dans le village du chef" + chef.getNom() + "vivent les légendaires gaulois :");
+		System.out.println("Dans le village du chef" + chef.getNom() + "vivent les legendaires gaulois :");
 		for (int i = 0; i < NbVillageois; i++) {
 			System.out.println("-" + villageois[i].getNom());
 		}
 	}
 
 	public static void main(String[] args) {
-		Village village = new Village("Village des Irréductibles", 30);
+		Village village = new Village("Village des Irreductibles", 30);
 		// Gaulois gaulois = village.trouverHabitant(30);
 		// Introuvable car le numero (30) est hors du tableau
 		Chef Abraracourcix = new Chef("Abraracourcix", 6);
